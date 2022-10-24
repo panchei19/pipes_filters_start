@@ -17,14 +17,20 @@ namespace CompAndDel
                 FilterNegative filterNegative = new FilterNegative();
                 PipeSerial pipeSerial = new PipeSerial(filterNegative, pipeNull);
                 FilterGreyscale filterGreyscale = new FilterGreyscale();
-                PipeSerial pipeSerial1 = new PipeSerial(filterGreyscale, pipeNull);
+                PipeSerial pipeSerial1 = new PipeSerial(filterGreyscale, pipeSerial);
+                IPicture filteredPicture = pipeSerial1.Send(picture);
+                provider.SavePicture(filteredPicture, "..\\Program\\filteredPicture1.jpg");
+
+                
             }
 
             static void ParteII()
             {
-                PictureProvider p = new PictureProvider();
+               /*
                 IPicture picture = p.GetPicture(@"beer.jpg");
-IPicture        pic = p.SavePicture(picture, @"beer.jpg");
+                IPicture pic = picture.SavePicture(picture, @"beer.jpg");
+                */
+                
             }
         }
     }
